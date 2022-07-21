@@ -22,16 +22,16 @@ class ImageModel {
     required this.tags,
   });
 
-  String id;
-  DateTime createdAt;
-  DateTime updatedAt;
-  DateTime promotedAt;
-  int width;
-  int height;
-  String color;
-  String blurHash;
-  String description;
-  String altDescription;
+  String? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  DateTime? promotedAt;
+  int? width;
+  int? height;
+  String? color;
+  String? blurHash;
+  String? description;
+  String? altDescription;
   Urls urls;
   User user;
   Links links;
@@ -41,12 +41,14 @@ class ImageModel {
         id: json["id"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        promotedAt: json["promoted_at"] ?? DateTime.parse(json["promoted_at"]),
+        promotedAt: json["promoted_at"] == null
+            ? null
+            : DateTime.parse(json['promoted_at']),
         width: json["width"],
         height: json["height"],
         color: json["color"],
         blurHash: json["blur_hash"],
-        description: json["description"],
+        description: json["description"] == null ? null : json["description"],
         altDescription: json["alt_description"],
         links: Links.fromJson(json["links"]),
         urls: Urls.fromJson(json["urls"]),

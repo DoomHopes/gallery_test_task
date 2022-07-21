@@ -13,17 +13,17 @@ class User {
     required this.instagramUsername,
   });
 
-  String id;
-  DateTime updatedAt;
-  String username;
-  String name;
-  String firstName;
-  String lastName;
-  String twitterUsername;
-  String portfolioUrl;
-  String bio;
-  String location;
-  String instagramUsername;
+  String? id;
+  DateTime? updatedAt;
+  String? username;
+  String? name;
+  String? firstName;
+  String? lastName;
+  String? twitterUsername;
+  String? portfolioUrl;
+  String? bio;
+  String? location;
+  String? instagramUsername;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json["id"],

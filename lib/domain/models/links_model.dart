@@ -1,7 +1,7 @@
 class Links {
-  String self;
-  String html;
-  String download;
+  String? self;
+  String? html;
+  String? download;
 
   Links({required this.self, required this.download, required this.html});
 

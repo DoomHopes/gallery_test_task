@@ -7,11 +7,11 @@ class Urls {
     required this.thumb,
   });
 
-  String raw;
-  String full;
-  String regular;
-  String small;
-  String thumb;
+  String? raw;
+  String? full;
+  String? regular;
+  String? small;
+  String? thumb;
 
   factory Urls.fromJson(Map<String, dynamic> json) => Urls(
         raw: json["raw"],

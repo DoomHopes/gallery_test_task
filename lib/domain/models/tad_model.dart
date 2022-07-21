@@ -4,8 +4,8 @@ class Tag {
     required this.title,
   });
 
-  String type;
-  String title;
+  String? type;
+  String? title;
 
   factory Tag.fromJson(Map<String, dynamic> json) => Tag(
         type: json["type"],
