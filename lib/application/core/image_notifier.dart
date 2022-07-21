@@ -8,8 +8,8 @@ import 'package:gallery_test_task/domain/models/image_model.dart';
 class ImageNotifier extends ChangeNotifier {
   List<ImageModel> imageModels = [];
 
-  String getUrl(int page, {String query = 'car'}) {
-    return 'https://api.unsplash.com/search/photos?page=$page&per_page=10&client_id=tZ53x_MgSn7Q0rh9HNWFkOC9nPLVqXL0T77iNilmD1U&query=$query';
+  String getUrl(int page, {String query = 'program'}) {
+    return 'https://api.unsplash.com/search/photos?page=$page&per_page=30&client_id=tZ53x_MgSn7Q0rh9HNWFkOC9nPLVqXL0T77iNilmD1U&query=$query';
   }
 
   Future<void> getData(int page) async {
@@ -20,10 +20,17 @@ class ImageNotifier extends ChangeNotifier {
       if (response.statusCode == 200) {
         final dynamic jsonData = json.decode(response.body);
         final List<dynamic> listMap = jsonData['results'];
-        imageModels += listMap
-            .map<ImageModel>((json) => ImageModel.fromJson(json))
-            .toList();
-        notifyListeners();
+        if (imageModels.isEmpty) {
+          imageModels = listMap
+              .map<ImageModel>((json) => ImageModel.fromJson(json))
+              .toList();
+          notifyListeners();
+        } else {
+          imageModels.addAll(listMap
+              .map<ImageModel>((json) => ImageModel.fromJson(json))
+              .toList());
+          notifyListeners();
+        }
       } else {
         throw Exception('Failed to load data');
       }
